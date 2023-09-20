@@ -16,6 +16,11 @@ export default {
       completedTasks: [], 
     };
   },
+  beforeCreate: {
+    startCompletedTasksList() {
+      this.completedTasks = this.$store.state.completedTasks;
+    },
+  },
   computed: {
     completedTasksList() {
       return this.$store.state.completedTasks;
@@ -34,6 +39,13 @@ export default {
 </script>
 
 <style scoped>
+
+.completed-tasks {
+  background-color: #7daaf1; 
+  padding: 20px;
+  border-radius: 10px;
+}
+
 h1 {
   font-size: 24px;
   margin-bottom: 20px;

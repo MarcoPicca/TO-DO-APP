@@ -10,11 +10,11 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
-    archiveTask(state, index) {
-      // archivia e rimuove dalla lista principale
-      const archivedTask = state.tasks[index];
-      state.completedTasks.push(archivedTask);
-      state.tasks.splice(index, 1);
+    archiveTask(state, task) {
+      state.completedTasks.push(task);
+    },
+    updateTasks(state, tasks) {
+      state.tasks = tasks;
     },
   },
   actions: {},
