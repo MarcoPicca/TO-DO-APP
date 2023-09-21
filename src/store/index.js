@@ -15,8 +15,7 @@ export default new Vuex.Store({
     },
     updateTasks(state, tasks) {
       state.tasks = tasks;
+      console.log(state.tasks);
     },
   },
-  actions: {},
-  modules: {},
 });

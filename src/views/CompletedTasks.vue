@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Tasks Completati</h1>
+    <h2><button><router-link to="/todolist">To-do List</router-link></button></h2>
     <ul>
       <li v-for="(task, index) in completedTasks" :key="index">
         <span>{{ task.text }}</span>
@@ -41,6 +42,7 @@ export default {
 <style scoped>
 
 .completed-tasks {
+  margin-top: 30px;
   background-color: #7daaf1; 
   padding: 20px;
   border-radius: 10px;
@@ -48,6 +50,7 @@ export default {
 
 h1 {
   font-size: 24px;
+  font-family: serif, sans-serif;
   margin-bottom: 20px;
 }
 
@@ -57,6 +60,7 @@ ul {
 }
 
 li {
+  margin-top: 30px;
   font-size: 18px;
   margin-bottom: 10px;
 }

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import TodoList from "../views/TodoList.vue";
 import CompletedTasks from "@/views/CompletedTasks.vue";
 
 Vue.use(VueRouter);
@@ -9,7 +9,7 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: TodoList,
   },
   {
     path: "/about",
@@ -21,6 +21,11 @@ const routes = [
     path: "/completati",
     name: "CompletedTasks",
     component: CompletedTasks,
+  },
+  {
+    path: "/todolist",
+    name: "TodoList",
+    component: TodoList,
   },
 ];
 

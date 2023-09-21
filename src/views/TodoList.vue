@@ -10,13 +10,13 @@
           
            <span class="textLista">{{ task.text }}</span>
            <span class="buttonsContainer">
-            <span class="buttonsContainerChild">
-             <button class="button" @click="renameTask(index)">Modifica</button>
-             <button class="button" @click="deleteTask(index)">Cancella</button>
+            <span>
+             <v-btn extra small color="blue" @click="renameTask(index)">Modifica</v-btn>
+             <v-btn extra small color="blue" @click="deleteTask(index)">Cancella</v-btn>
             </span>
-            <span class="buttonsContainerChild">
-             <button class="button" @click="toggleCompletion(index)" >{{ task.completed ? 'Annulla' : 'Conferma' }}</button>
-             <button class="button" @click="archiveTask(index)" v-if="task.completed">Archivia</button>
+            <span>
+             <v-btn extra small color="blue" @click="toggleCompletion(index)" >{{ task.completed ? 'Annulla' : 'Conferma' }}</v-btn>
+             <v-btn extra small color="blue" @click="archiveTask(index)" v-if="task.completed">Archivia</v-btn>
             </span>
           </span>
         </div>
@@ -34,14 +34,16 @@ export default {
     };
   },
   beforeCreate: {
-
+    setTasks() {
+      this.tasks = this.$store.tasks
+    }
   },
   methods: {
     addTask() {
       if (this.newTask.trim() !== '') {
         this.tasks.push({ text: this.newTask, completed: false });
         this.newTask = '';
-        this.$store.commit('udateTasks', this.tasks)
+        this.$store.commit('updateTasks', this.tasks)
       }
     },
     renameTask(index) {
@@ -68,12 +70,14 @@ export default {
 <style scoped>
 h1 {
   font-size: 27px;
+  font-family: serif, sans-serif;
   margin-bottom: 20px;
   margin-top: -20px;
 }
 
 h2 {
   border-radius: 20px;
+  font-family: serif, sans-serif;
 }
 
 input {
@@ -98,7 +102,7 @@ input {
 
 .textLista {
   flex-grow: 1;
-  font-size: 18px;
+  font-size: 22px;
   align-items: center;
   width: 100%;
 }
@@ -108,22 +112,6 @@ input {
   justify-content: space-between;
   width: 100%;
   align-items: center;
-}
-
-.buttonsContainerChild {
-  display: flex;
-  justify-content: space-between;
-  width: 30%;
-  align-items: center;
-}
-
-.button {
-  border-radius: 20px;
-  font-size: 12px;
-  width: 30px;
-  height: 17px;
-  margin: 5px;
-  border: 1px black;
 }
 
 </style>
