@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1>TO-DO APP</h1> 
+    <h1>TO-DO APP</h1>
     <h2><button><router-link to="/completati">Completati</router-link></button></h2>
+    <h3><button><router-link to="/login">Login</router-link></button></h3>
+    <p>Utente: {{ username }}</p>
     <input v-model="newTask" @keyup.enter="addTask" placeholder="Aggiungi un task..." />
     <ul>
      
@@ -29,9 +31,13 @@
 export default {
   data() {
     return {
+      username: '',
       newTask: '',
       tasks: [],
     };
+  },
+  created() {
+    this.username = localStorage.getItem('username');
   },
   beforeCreate: {
     setTasks() {
@@ -63,13 +69,13 @@ export default {
       this.$store.commit('archiveTask', this.tasks[index]);
       this.$router.push({ name: 'CompletedTasks' }); 
     },
-  },
+  }
 };
 </script>
 
 <style scoped>
 h1 {
-  font-size: 27px;
+  font-size: 35px;
   font-family: serif, sans-serif;
   margin-bottom: 20px;
   margin-top: -20px;
@@ -78,6 +84,15 @@ h1 {
 h2 {
   border-radius: 20px;
   font-family: serif, sans-serif;
+}
+
+h3 {
+  margin-top: 20px;
+  font-family: serif, sans-serif;
+}
+
+p {
+  margin-top: 20px
 }
 
 input {

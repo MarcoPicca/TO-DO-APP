@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import TodoList from "../views/TodoList.vue";
 import CompletedTasks from "@/views/CompletedTasks.vue";
+import LoginPage from '@/views/LoginPage.vue'; 
 
 Vue.use(VueRouter);
 
@@ -12,10 +13,9 @@ const routes = [
     component: TodoList,
   },
   {
-    path: "/about",
-    name: "about",
-    component: () =>
-      import("../views/AboutView.vue"),
+    path: '/login',
+    name: 'LoginPage',
+    component: LoginPage,
   },
   {
     path: "/completati",

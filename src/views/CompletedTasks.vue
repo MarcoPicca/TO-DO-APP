@@ -2,6 +2,7 @@
   <div>
     <h1>Tasks Completati</h1>
     <h2><button><router-link to="/todolist">To-do List</router-link></button></h2>
+    <p>Utente: {{ username }}</p>
     <ul>
       <li v-for="(task, index) in completedTasks" :key="index">
         <span>{{ task.text }}</span>
@@ -14,8 +15,12 @@
 export default {
   data() {
     return {
+      username: '',
       completedTasks: [], 
     };
+  },
+  created() {
+    this.username = localStorage.getItem('username');
   },
   beforeCreate: {
     startCompletedTasksList() {
@@ -52,6 +57,10 @@ h1 {
   font-size: 24px;
   font-family: serif, sans-serif;
   margin-bottom: 20px;
+}
+
+p {
+  margin-top: 20px;
 }
 
 ul {
